@@ -1,4 +1,4 @@
-import {  useEffect, useState, useRef  } from "react";
+import { useRef } from "react";
 import Header from "../components/Header";
 import ServiceCard from "../components/ServiceCard";
 import Socials from "../components/Socials";
@@ -22,19 +22,7 @@ export default function Home() {
   const textTwo = useRef();
   const textThree = useRef();
   const textFour = useRef();
-
-  const [theme, setTheme] = useState("light"); // Default to light theme\
-
-  // This hook runs once when the component mounts
-  useEffect(() => {
-    // Read the theme from localStorage
-    const storedTheme = localStorage.getItem("theme");
-    
-    // If there's a theme stored, use it
-    if (storedTheme) {
-      setTheme(storedTheme);
-    }
-  }, []); // Empty dependency array means this runs once on mount
+  
 
   // Handling Scroll
   const handleWorkScroll = () => {
