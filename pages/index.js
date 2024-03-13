@@ -134,7 +134,7 @@ export default function Home() {
           <p className="tablet:m-10 mt-2 text-xl laptop:text-3xl w-full laptop:w-3/5">
             {data.aboutpara}<br/>
             <br/>
-            I'm available at ali@inspired2uplift.com!<br/>
+            IO&#769;m available at ali@inspired2uplift.com!<br/>
           </p>
         </div>
         <Footer />
