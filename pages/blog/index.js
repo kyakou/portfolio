@@ -65,7 +65,7 @@ const Blog = ({ posts }) => {
       <>
         {data.showCursor && <Cursor />}
         <Head>
-          <title>Ali Azhar | Blog</title>
+          <title>Ali | Blog</title>
         </Head>
         <div
           className={`container mx-auto mb-10 ${

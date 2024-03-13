@@ -29,7 +29,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                 className="font-medium p-2 laptop:p-0 link"
               >
                 {/* Name goes here */}
-                <b>aliazhar.</b>.
+                <b>aliazhar</b>.
               </h1>
 
               <div className="flex items-center">
