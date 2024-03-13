@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import {  useEffect, useState, useRef  } from "react";
 import Header from "../components/Header";
 import ServiceCard from "../components/ServiceCard";
 import Socials from "../components/Socials";
@@ -22,6 +22,19 @@ export default function Home() {
   const textTwo = useRef();
   const textThree = useRef();
   const textFour = useRef();
+
+  const [theme, setTheme] = useState("light"); // Default to light theme\
+
+  // This hook runs once when the component mounts
+  useEffect(() => {
+    // Read the theme from localStorage
+    const storedTheme = localStorage.getItem("theme");
+    
+    // If there's a theme stored, use it
+    if (storedTheme) {
+      setTheme(storedTheme);
+    }
+  }, []); // Empty dependency array means this runs once on mount
 
   // Handling Scroll
   const handleWorkScroll = () => {
@@ -109,7 +122,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-10 laptop:mt-30 p-2 laptop:p-0">
+        {/* <div className="mt-10 laptop:mt-30 p-2 laptop:p-0">
           <h1 className="tablet:m-10 text-2xl text-bold">Services</h1>
           <div className="mt-5 tablet:m-10 grid grid-cols-1 laptop:grid-cols-2 gap-6">
             {data.services.map((service, index) => (
@@ -120,7 +133,7 @@ export default function Home() {
               />
             ))}
           </div>
-        </div>
+        </div> */}
         {/* This button should not go into production */}
         {process.env.NODE_ENV === "development" && (
           <div className="fixed bottom-5 right-5">
@@ -129,12 +142,12 @@ export default function Home() {
             </Link>
           </div>
         )}
-        <div className="mt-10 laptop:mt-40 p-2 laptop:p-0" ref={aboutRef}>
+        <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={aboutRef}>
           <h1 className="tablet:m-10 text-2xl text-bold">About</h1>
-          <p className="tablet:m-10 mt-2 text-xl laptop:text-3xl w-full laptop:w-3/5">
+          <p className="tablet:m-10 mt-2 text-xl laptop:text-xl w-full laptop:w-3/5">
             {data.aboutpara}<br/>
             <br/>
-            IO&#769;m available at ali@inspired2uplift.com!<br/>
+            I&apos;m available at ali@inspired2uplift.com!<br/>
           </p>
         </div>
         <Footer />
