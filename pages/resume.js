@@ -6,6 +6,8 @@ import ProjectResume from "../components/ProjectResume";
 import Socials from "../components/Socials";
 import Button from "../components/Button";
 import { useTheme } from "next-themes";
+import Head from 'next/head';
+
 // Data
 import { name, showResume } from "../data/portfolio.json";
 import { resume } from "../data/portfolio.json";
@@ -32,6 +34,9 @@ const Resume = () => {
         </div>
       )}
       {data.showCursor && <Cursor />}
+      <Head>
+      <title>{data.name} | Resume</title>
+      </Head>
       <div
         className={`container mx-auto mb-10 ${
           data.showCursor && "cursor-none"
@@ -45,7 +50,7 @@ const Resume = () => {
                 mount && theme.theme === "dark" ? "bg-slate-800" : "bg-slate-800"
               } max-w-4xl p-20 mob:p-5 desktop:p-20 rounded-lg shadow-sm`}
             >
-              <h1 className="text-3xl font-bold">{name}</h1>
+              <h1 className="text-3xl font-bold">Ali Azhar</h1>
               <h2 className="text-xl mt-5">{resume.tagline}</h2>
               <h2 className="w-4/5 text-xl mt-5 opacity-50">
                 {resume.description}

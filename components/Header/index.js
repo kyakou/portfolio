@@ -8,7 +8,8 @@ import data from "../../data/portfolio.json";
 
 const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
   const router = useRouter();
-  const { theme, setTheme } = useTheme();
+  const theme = "dark";
+  // const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   const { name, showBlog, showResume } = data;
@@ -27,14 +28,15 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                 onClick={() => router.push("/")}
                 className="font-medium p-2 laptop:p-0 link"
               >
-                {name}.
+                {/* Name goes here */}
+                <b>aliazhar.</b>.
               </h1>
 
               <div className="flex items-center">
                 {data.darkMode && (
                   <Button
                     onClick={() =>
-                      setTheme(theme === "dark" ? "light" : "dark")
+                      setTheme(theme === "dark" ? "dark" : "dark")
                     }
                   >
                     <img
@@ -64,7 +66,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
             </div>
             <Popover.Panel
               className={`absolute right-0 z-10 w-11/12 p-4 ${
-                theme === "dark" ? "bg-slate-800" : "bg-white"
+                theme === "dark" ? "bg-slate-800" : "bg-slate-800"
               } shadow-md rounded-md`}
             >
               {!isBlog ? (
@@ -127,7 +129,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
           onClick={() => router.push("/")}
           className="font-medium cursor-pointer mob:p-2 laptop:p-0"
         >
-          {name}.
+          <b>aliazhar.</b>
         </h1>
         {!isBlog ? (
           <div className="flex">

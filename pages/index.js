@@ -53,7 +53,7 @@ export default function Home() {
     <div className={`relative ${data.showCursor && "cursor-none"}`}>
       {data.showCursor && <Cursor />}
       <Head>
-        <title>{data.name}</title>
+        <title>Ali Azhar | Home</title>
       </Head>
 
       <div className="gradient-circle"></div>
@@ -95,18 +95,33 @@ export default function Home() {
           <Socials className="mt-2 laptop:mt-5" />
         </div>
         <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={workRef}>
-          <h1 className="text-2xl text-bold">Work</h1>
+          <h1 className="text-2xl text-bold"><strong>Work</strong></h1>
 
           <div className="mt-5 laptop:mt-10 grid grid-cols-1 tablet:grid-cols-2 gap-4">
-            {data.projects.map((project) => (
+              {data.projects.map((project) => (
               <WorkCard
                 key={project.id}
                 img={project.imageSrc}
                 name={project.title}
                 description={project.description}
-                onClick={() => window.open(project.url)}
+                onClick={() => {
+                  // Check if project.url is not defined or empty
+                  if (!project.url) {
+                    // Do nothing
+                    return;
+                  }
+
+                  // Check if the URL contains a dot, open in a new tab
+                  if (project.url.includes('.')) {
+                    window.open(project.url, '_blank');
+                  } else {
+                    // If the URL does not contain a dot, navigate in the same tab
+                    window.location.href = project.url;
+                  }
+                }}
               />
             ))}
+
           </div>
         </div>
 
@@ -131,11 +146,9 @@ export default function Home() {
           </div>
         )}
         <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={aboutRef}>
-          <h1 className="tablet:m-10 text-2xl text-bold">About</h1>
+          <h1 className="tablet:m-10 text-2xl text-bold"><strong>About</strong></h1>
           <p className="tablet:m-10 mt-2 text-xl laptop:text-xl w-full laptop:w-3/5">
-            {data.aboutpara}<br/>
-            <br/>
-            I&apos;m available at ali@inspired2uplift.com!<br/>
+            {data.aboutpara}
           </p>
         </div>
         <Footer />
