@@ -9,13 +9,14 @@
 }
 
 body {
-  @apply dark:bg-black dark:text-white;
+  background-color: #131313; /* Set the body background color */
+  color: white; /* Assuming you want white text against the dark background */
 }
 
 .gradient-circle, .gradient-circle-bottom {
-  position: fixed; /* Change from absolute to fixed if you want it always visible */
+  position: relative; /* No change needed here based on your last update */
   pointer-events: none;
-  z-index: -1; /* Ensure it's behind content but adjust as needed */
+  z-index: -1; 
   width: 100vw;
   opacity: 0.5;
   filter: blur(40px);
@@ -42,7 +43,7 @@ body {
 .gradient-shadow:hover::before {
   content: "";
   z-index: -1;
-  position: absolute;
+  position: relative;
   top: 0;
   right: 0;
   bottom: 0;
@@ -55,15 +56,10 @@ body {
   border-radius: inherit;
 }
 
-/* 
-* Prevents issues when the parent creates a 
-* stacking context. (For example, using the transform
-* property )
-*/
 .gradient-shadow:hover::after {
   content: "";
   z-index: -1;
-  position: absolute;
+  position: relative;
   top: 0;
   right: 0;
   bottom: 0;
