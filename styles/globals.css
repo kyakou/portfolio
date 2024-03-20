@@ -73,3 +73,18 @@ body {
     overflow-x: hidden; /* Hide horizontal overflow */
   }
 }
+
+.glow {
+  color: #F0F0F0; /* Light grey text color, adjust as needed */
+}
+
+/* Project card height */
+.project-height {
+  height: 300px;
+}
+
+@media (max-width: 767px) {
+  .project-height {
+    height: 200px;
+  }
+}

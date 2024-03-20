@@ -28,20 +28,19 @@ const Socials = ({ className }) => {
           <img className="h-5" src={`/images/linkedin.png`} alt="Linkedin"></img>
         </div>
       </Button>
+
+      <Button
+        onClick={() => window.open("https://www.instagram.com/aliezazhar", '_blank')}
+      >
+        <div>
+          <img className="h-5" src={`/images/ig.svg`} alt="Instagram"></img>
+        </div>
+      </Button>
       
       {yourData.socials.map((social, index) => (
         <Button
-          key={index}
-          title={social.title.includes("@") ? "Click to copy to clipboard" : "Open link"}
-          onClick={() => {
-            if (social.title.includes("@")) {
-              // Copy to clipboard
-              copyToClipboard(social.title);
-            } else {
-              // Open the link
-              window.open(social.link);
-            }
-          }}
+
+          
         >
           {social.title}
         </Button>

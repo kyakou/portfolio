@@ -11,15 +11,18 @@ import BlogEditor from "../../components/BlogEditor";
 import { useRouter } from "next/router";
 import Cursor from "../../components/Cursor";
 import data from "../../data/portfolio.json";
+import { ISOToDate } from '../../utils';
 
 const BlogPost = ({ post }) => {
   const [showEditor, setShowEditor] = useState(false);
   const textOne = useRef();
   const textTwo = useRef();
+  const textThree = useRef();
+  const textFour = useRef();
   const router = useRouter();
 
   useIsomorphicLayoutEffect(() => {
-    stagger([textOne.current, textTwo.current], { y: 30 }, { y: 0 });
+    stagger([textOne.current, textTwo.current, textThree.current, textFour.current], { y: 30 }, { y: 0 });
   }, []);
 
   return (
@@ -44,19 +47,23 @@ const BlogPost = ({ post }) => {
           ></img>
           <h1
             ref={textOne}
-            className="mt-10 text-4xl mob:text-2xl laptop:text-6xl font-bold"
+            className="mt-10 mb-2 text-4xl mob:text-xl laptop:text-6xl font-bold"
           >
             {post.title}
           </h1>
           <h2
             ref={textTwo}
-            className="mt-2 text-xl max-w-4xl text-darkgray opacity-50"
+            className="mt-2 mb-2 text-l max-w-4xl text-darkgray opacity-50"
           >
             {post.tagline}
           </h2>
+          <h3 ref={textThree} className="mt-2 tablet:text-l max-w-4xl mob:text-s text-darkgray opacity-30" style={{ fontSize: "smaller",color: "rgba(255, 255, 255, 0.5)" }}>
+            {ISOToDate(post.date)}
+          </h3>
         </div>
+        <div ref={textFour}>
         <ContentSection content={post.content}></ContentSection>
-        <Footer />
+        </div>
       </div>
       {process.env.NODE_ENV === "development" && (
         <div className="fixed bottom-6 right-6">

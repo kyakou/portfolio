@@ -171,9 +171,10 @@ export default function Home({ posts }) {
             <br></br>🚀 I&rsquo;m one of the Founders of <strong>Inspired 2 Uplift</strong>, a nonprofit dedicated to empowering youth with disabilities and fighting the battle against societal stigmas around disability. I am the Logistics Chair of the <strong>Richmond Youth Foundation</strong>, where I lead a team of volunteers and spearhead projects designed to get Richmond youth more involved with community initiatives and nonprofit work. And finally, I&rsquo;m passionate about robotics, AI, engineering, and the technology of the future.
             <br></br>
             <br></br>✉️ Feel free to reach out if you have any questions, opportunities, or just want to talk! I&rsquo;m always open to exploring collaborations, sharing insights, or lending a helping hand in projects that aim to make a meaningful impact! <strong>Let&rsquo;s create something amazing together!</strong>
+            
           </p>
         </div>
-        <h1 className="tablet:m-10 text-2xl font-bold"><strong>Recent Blogs</strong></h1>
+        <h1 className="tablet:m-10 mob:mt-10 tablet:mt-19 text-2xl font-bold"> Recent Blogs</h1>
         <RecentBlogs posts={posts}/>
         <Footer />
       </div>

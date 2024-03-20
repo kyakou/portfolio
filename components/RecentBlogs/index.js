@@ -29,7 +29,7 @@ const RecentBlogs = ({ posts }) => {
             alt={post.title}
           />
           <h2 className="mt-5 text-xl font-semibold">{post.title}</h2>
-          <p className="mt-2 opacity-50 text-m">
+          <p className="mt-2 mb-2 opacity-50 text-m">
             {post.preview.length > 150 ? post.preview.substring(0, 150) + '...' : post.preview}
           </p>
           <span className="text-sm mt-5 opacity-25">

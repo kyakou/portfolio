@@ -3,11 +3,11 @@ date: '2024-03-13T21:49:45.754Z'
 title: The Making of TrashTrack Pro
 tagline: >-
   The TrashTrack Pro is a smart trash can designed to help us make more informed decisions about our waste
-  and help make the planet cleaner, one day at a time. This blog (when it's finished :P) talks about my
+  and puts people on the path towards a greener footprint. This blog (when it's finished :P) talks about my
   experiences conceptualizing and coding as the sole developer of the project.
 preview: >-
   The TrashTrack Pro is a smart trash can designed to help us make more informed decisions about our waste
-  and help make the planet cleaner, one day at a time. This blog (when it's finished :P) talks about my
+  and puts people on the path towards a greener footprint. This blog (when it's finished :P) talks about my
   experiences conceptualizing and coding as the sole developer of the project.
 image: >-
   https://raw.githubusercontent.com/kyakou/portfolio/main/public/images/tpp_1.jpg
@@ -56,7 +56,7 @@ Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
 
 ## Links
 
-My favorite search engine is [Duck Duck Go](https://duckduckgo.com).
+Check out the [Sneak peak](https://www.youtube.com/watch?v=dQw4w9WgXcQ) 😊
 
 ## Images
 
