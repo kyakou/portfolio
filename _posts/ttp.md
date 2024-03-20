@@ -3,11 +3,11 @@ date: '2024-03-13T21:49:45.754Z'
 title: The Making of TrashTrack Pro
 tagline: >-
   The TrashTrack Pro is a smart trash can designed to help us make more informed decisions about our waste
-  and puts people on the path towards a greener footprint. This blog (when it's finished :P) talks about my
-  experiences conceptualizing and coding as the sole developer of the project.
+  and puts people on the path towards a greener footprint. This blog (when its finished :P) talks about my
+  experiences conceptualizing and coding as the sole developer of the project. 
 preview: >-
   The TrashTrack Pro is a smart trash can designed to help us make more informed decisions about our waste
-  and puts people on the path towards a greener footprint. This blog (when it's finished :P) talks about my
+  and puts people on the path towards a greener footprint. This blog (when its finished :P) talks about my
   experiences conceptualizing and coding as the sole developer of the project.
 image: >-
   https://raw.githubusercontent.com/kyakou/portfolio/main/public/images/tpp_1.jpg
