@@ -39,8 +39,7 @@ const Socials = ({ className }) => {
       
       {yourData.socials.map((social, index) => (
         <Button
-
-          
+          key={social.id || index} // Preferred to use a unique id if available
         >
           {social.title}
         </Button>
