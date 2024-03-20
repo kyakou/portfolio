@@ -33,20 +33,18 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
               </h1>
 
               <div className="flex items-center">
-                {data.darkMode && (
-                  <Button
-                    onClick={() =>
-                      setTheme(theme === "dark" ? "dark" : "dark")
-                    }
-                  >
-                    <img
-                      className="h-6"
-                      src={`/images/${
-                        theme === "dark" ? "moon.svg" : "sun.svg"
-                      }`}
-                    ></img>
-                  </Button>
-                )}
+                {/* <Button onClick={() => window.open("https://www.github.com/kyakou", '_blank')}>
+                  <div style={{ marginRight: '5px' }}>
+                    <img className="h-5" src={`/images/github.svg`}></img>
+                  </div>
+                </Button>
+
+                <Button onClick={() => window.open("https://www.linkedin.com/in/-ali-azhar/", '_blank')}>
+                  <div style={{ marginRight: '10px' }}>
+                    <img className="h-5" src={`/images/linkedin.png`}></img>
+                  </div>
+                </Button> */}
+
 
                 <Popover.Button>
                   <img
@@ -60,9 +58,11 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                         ? "cancel.svg"
                         : "cancel-white.svg"
                     }`}
+                    alt="Menu"
                   ></img>
                 </Popover.Button>
               </div>
+
             </div>
             <Popover.Panel
               className={`absolute right-0 z-10 w-11/12 p-4 ${
@@ -86,11 +86,6 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                     </Button>
                   )}
 
-                  {/* <Button
-                    onClick={() => window.open("mailto:hello@chetanverma.com")}
-                  >
-                    Contact
-                  </Button> */}
                 </div>
               ) : (
                 <div className="grid grid-cols-1">
@@ -108,12 +103,6 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                       Resume
                     </Button>
                   )}
-{/* 
-                  <Button
-                    onClick={() => window.open("mailto:hello@chetanverma.com")}
-                  >
-                    Contact
-                  </Button> */}
                 </div>
               )}
             </Popover.Panel>
@@ -147,19 +136,26 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
               </Button>
             )}
 
-            {/* <Button onClick={() => window.open("mailto:hello@chetanverma.com")}>
-              Contact
-            </Button> */}
-            {mounted && theme && data.darkMode && (
+            {/* {mounted && theme && (
               <Button
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                onClick={() => window.open("https://www.github.com/kyakou", '_blank')}
               >
                 <img
                   className="h-6"
-                  src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
+                  src={`/images/github.svg`}
                 ></img>
               </Button>
             )}
+            {mounted && theme && (
+              <Button
+                onClick={() => window.open("https://www.linkedin.com/in/-ali-azhar/", '_blank')}
+              >
+                <img
+                  className="h-6"
+                  src={`/images/linkedin.png`}
+                ></img>
+              </Button>
+            )} */}
           </div>
         ) : (
           <div className="flex">
@@ -176,20 +172,26 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
               </Button>
             )}
 
-            {/* <Button onClick={() => window.open("mailto:hello@chetanverma.com")}>
-              Contact
-            </Button> */}
-
-            {mounted && theme && data.darkMode && (
+            {/* {mounted && theme && (
               <Button
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                onClick={() => window.open("https://www.github.com/kyakou", '_blank')}
               >
                 <img
                   className="h-6"
-                  src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
+                  src={`/images/github.svg`}
                 ></img>
               </Button>
             )}
+            {mounted && theme && (
+              <Button
+                onClick={() => window.open("https://www.linkedin.com/in/-ali-azhar/", '_blank')}
+              >
+                <img
+                  className="h-6"
+                  src={`/images/linkedin.png`}
+                ></img>
+              </Button>
+            )} */}
           </div>
         )}
       </div>

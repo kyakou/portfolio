@@ -64,7 +64,7 @@ export default function Home() {
           handleWorkScroll={handleWorkScroll}
           handleAboutScroll={handleAboutScroll}
         />
-        <div className="laptop:mt-20 mt-10">
+        <div className="laptop:mt-10 mt-10">
           <div className="mt-5">
             <h1
               ref={textOne}
@@ -91,8 +91,9 @@ export default function Home() {
               {data.headerTaglineFour}
             </h1>
           </div>
-
-          <Socials className="mt-2 laptop:mt-5" />
+          <div>
+          <Socials className="mt-2 mob:mt-8 laptop:mt-5" />
+          </div>
         </div>
         <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={workRef}>
           <h1 className="text-2xl text-bold"><strong>Work</strong></h1>
