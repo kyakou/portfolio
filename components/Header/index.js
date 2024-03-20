@@ -9,13 +9,21 @@ import data from "../../data/portfolio.json";
 const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
   const router = useRouter();
   const theme = "dark";
-  // const { theme, setTheme } = useTheme();
+  const [headerOpacity, setHeaderOpacity] = useState(1);
   const [mounted, setMounted] = useState(false);
 
   const { name, showBlog, showResume } = data;
 
   useEffect(() => {
     setMounted(true);
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const opacity = Math.max(1 - (scrollTop / 100), 0);
+      setHeaderOpacity(opacity);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -110,9 +118,9 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
         )}
       </Popover>
       <div
-        className={`mt-10 hidden flex-row items-center justify-between sticky ${
-          theme === "light" && "bg-white"
-        } dark:text-white top-0 z-10 tablet:flex`}
+      // mt-10 hidden flex-row items-center justify-between sticky
+        className={`mt-10 hidden flex-row items-center justify-between sticky top-0 z-10 tablet:flex ${theme === "light" && "bg-white"} dark:text-white`}
+        style={{ opacity: headerOpacity }}
       >
         <h1
           onClick={() => router.push("/")}
