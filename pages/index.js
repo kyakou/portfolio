@@ -10,11 +10,28 @@ import Head from "next/head";
 import Button from "../components/Button";
 import Link from "next/link";
 import Cursor from "../components/Cursor";
+import { useEffect, useState } from 'react';
+
 
 // Local Data
 import data from "../data/portfolio.json";
+import { getAllPosts } from '../utils/api'
+import RecentBlogs from '../components/RecentBlogs'; // Adjust the import path as necessary'
 
-export default function Home() {
+export async function getStaticProps() {
+  const posts = getAllPosts(['slug', 'title', 'image', 'preview', 'date'])
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, 3); // Fetch and pass only the most recent three posts
+
+  return {
+    props: {
+      posts,
+    },
+  };
+}
+
+
+export default function Home({ posts }) {
   // Ref
   const workRef = useRef();
   const aboutRef = useRef();
@@ -22,7 +39,6 @@ export default function Home() {
   const textTwo = useRef();
   const textThree = useRef();
   const textFour = useRef();
-  
 
   // Handling Scroll
   const handleWorkScroll = () => {
@@ -148,9 +164,8 @@ export default function Home() {
         )}
         <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={aboutRef}>
           <h1 className="tablet:m-10 text-2xl font-bold"><strong>About</strong></h1>
-          <p className="tablet:m-10 mt-2 text-xl laptop:text-xl w-full laptop:w-3/5">
-            {/* {data.aboutpara} */}
-            👋 <strong>I&rsquo;m Ali Azhar,</strong> an aspiring developer and a passionate engineering student at Langara College. Whether it&rsquo;s through the tech that I create or the volunteer work that I do, every project and initiative I undertake is driven by my desire to make the world a better place. 
+          <p className="tablet:m-10 mt-2 text-s laptop:text-m w-full laptop:w-3/5">
+            👋 <strong>I&rsquo;m Ali Azhar,</strong> an aspiring developer and a passionate engineering student at <strong>Langara College</strong>. Whether it&rsquo;s through the tech that I create or the volunteer work that I do, every project and initiative I undertake is driven by my desire to make the world a better place. 
             I&rsquo;m always looking for opportunities for learning and growth, be it through formal education, hands-on projects, or collaborative experiences with peers and mentors in the field.
             <br></br>
             <br></br>🚀 I&rsquo;m one of the Founders of <strong>Inspired 2 Uplift</strong>, a nonprofit dedicated to empowering youth with disabilities and fighting the battle against societal stigmas around disability. I am the Logistics Chair of the <strong>Richmond Youth Foundation</strong>, where I lead a team of volunteers and spearhead projects designed to get Richmond youth more involved with community initiatives and nonprofit work. And finally, I&rsquo;m passionate about robotics, AI, engineering, and the technology of the future.
@@ -158,6 +173,8 @@ export default function Home() {
             <br></br>✉️ Feel free to reach out if you have any questions, opportunities, or just want to talk! I&rsquo;m always open to exploring collaborations, sharing insights, or lending a helping hand in projects that aim to make a meaningful impact! <strong>Let&rsquo;s create something amazing together!</strong>
           </p>
         </div>
+        <h1 className="tablet:m-10 text-2xl font-bold"><strong>Recent Blogs</strong></h1>
+        <RecentBlogs posts={posts}/>
         <Footer />
       </div>
     </div>
