@@ -31,8 +31,7 @@ yarn-error.log*
 # vercel
 .vercel
 
-_pages/guitar.md
-_pages/mandarin.md
-_pages/skateboard.md
-_pages/gym.md
-_pages/DS_Store
+/_pages/guitar.md
+/_pages/mandarin.md
+/_pages/skateboard.md
+/_pages/gym.md
