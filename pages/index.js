@@ -19,19 +19,25 @@ import { getAllPosts } from '../utils/api'
 import RecentBlogs from '../components/RecentBlogs'; // Adjust the import path as necessary'
 
 export async function getStaticProps() {
-  const posts = getAllPosts(['slug', 'title', 'image', 'preview', 'date'])
-    .sort((a, b) => new Date(b.date) - new Date(a.date))
-    .slice(0, 3); // Fetch and pass only the most recent three posts
+  // Fetch all posts and sort them
+  const allPosts = getAllPosts(['slug', 'title', 'image', 'preview', 'date'])
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+  
+  // Calculate the total number of posts
+  const totalPostsCount = allPosts.length;
+
+  // Now slice the array to get only the most recent three posts
+  const posts = allPosts.slice(0, 3);
 
   return {
     props: {
       posts,
+      totalPostsCount,
     },
   };
 }
 
-
-export default function Home({ posts }) {
+export default function Home({ posts, totalPostsCount }) {
   // Ref
   const workRef = useRef();
   const aboutRef = useRef();
@@ -39,6 +45,7 @@ export default function Home({ posts }) {
   const textTwo = useRef();
   const textThree = useRef();
   const textFour = useRef();
+  const showSeeMoreButton = totalPostsCount > 3;
 
   // Handling Scroll
   const handleWorkScroll = () => {
@@ -114,32 +121,41 @@ export default function Home({ posts }) {
         <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={workRef}>
           <h1 className="text-2xl font-bold"><strong>Work</strong></h1>
 
-          <div className="mt-5 laptop:mt-10 grid grid-cols-1 tablet:grid-cols-2 gap-4">
-              {data.projects.map((project) => (
-              <WorkCard
-                key={project.id}
-                img={project.imageSrc}
-                name={project.title}
-                description={project.description}
-                onClick={() => {
-                  // Check if project.url is not defined or empty
-                  if (!project.url) {
-                    // Do nothing
-                    return;
-                  }
+          <div className="mt-5 laptop:mt-10 grid grid-cols-1 tablet:grid-cols-2 gap-4 justify-center">
+            {data.projects.map((project, index, projects) => {
+              const isLastItem = index === projects.length - 1;
+              const isOddNumberOfProjects = projects.length % 2 !== 0;
+              
+              // Conditional wrapper for the last item if the number of projects is odd
+              const projectContent = (
+                <WorkCard
+                  key={project.id}
+                  img={project.imageSrc}
+                  name={project.title}
+                  description={project.description}
+                  url={project.url}
+                  onClick={() => {
+                    if (!project.url) return;
+                    project.url.includes('.') ? window.open(project.url, '_blank') : (window.location.href = project.url);
+                  }}
+                />
+              );
 
-                  // Check if the URL contains a dot, open in a new tab
-                  if (project.url.includes('.')) {
-                    window.open(project.url, '_blank');
-                  } else {
-                    // If the URL does not contain a dot, navigate in the same tab
-                    window.location.href = project.url;
-                  }
-                }}
-              />
-            ))}
-
+              if (isLastItem && isOddNumberOfProjects) {
+                // Wrap the last item to center it
+                return (
+                  <div key={project.id} className="tablet:col-span-2 flex justify-center">
+                    {projectContent}
+                  </div>
+                );
+              } else {
+                return projectContent;
+              }
+            })}
           </div>
+
+
+
         </div>
 
         {/* <div className="mt-10 laptop:mt-30 p-2 laptop:p-0">
@@ -162,22 +178,27 @@ export default function Home({ posts }) {
             </Link>
           </div>
         )}
-        <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={aboutRef}>
-          <h1 className="tablet:m-10 text-2xl font-bold"><strong>About</strong></h1>
-          <p className="tablet:m-10 mt-2 text-s laptop:text-m w-full laptop:w-3/5">
+    <div className="laptop:w-3/5">
+      <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={aboutRef}>
+        <h1 className="tablet:m-10 text-2xl font-bold">
+          <strong>About</strong>
+        </h1>
+        <div className="tablet:m-10 mt-2 text-s laptop:text-m overflow-hidden rounded-lg shadow-lg transition-all ease-out duration-300 hover:scale-105">
             👋 <strong>I&rsquo;m Ali Azhar,</strong> an aspiring developer and a passionate engineering student at <strong>Langara College</strong>. Whether it&rsquo;s through the tech that I create or the volunteer work that I do, every project and initiative I undertake is driven by my desire to make the world a better place. 
             I&rsquo;m always looking for opportunities for learning and growth, be it through formal education, hands-on projects, or collaborative experiences with peers and mentors in the field.
             <br></br>
-            <br></br>🚀 I&rsquo;m one of the Founders of <strong>Inspired 2 Uplift</strong>, a nonprofit dedicated to empowering youth with disabilities and fighting the battle against societal stigmas around disability. I am the Logistics Chair of the <strong>Richmond Youth Foundation</strong>, where I lead a team of volunteers and spearhead projects designed to get Richmond youth more involved with community initiatives and nonprofit work. And finally, I&rsquo;m passionate about robotics, AI, engineering, and the technology of the future.
+            <br></br>🚀 I am one of the Founders of <strong>Inspired 2 Uplift</strong>, a nonprofit dedicated to empowering youth with disabilities and fighting the battle against societal stigmas around disability. I am the Logistics Chair of the <strong>Richmond Youth Foundation</strong>, where I lead a team of volunteers and spearhead projects designed to get Richmond youth more involved with community initiatives and nonprofit work. In my spare time, I enjoy learning about robotics, AI, and the technology of the future.
             <br></br>
             <br></br>✉️ Feel free to reach out if you have any questions, opportunities, or just want to talk! I&rsquo;m always open to exploring collaborations, sharing insights, or lending a helping hand in projects that aim to make a meaningful impact! <strong>Let&rsquo;s create something amazing together!</strong>
-            
-          </p>
         </div>
-        <h1 className="tablet:m-10 mob:mt-10 tablet:mt-19 text-2xl font-bold"> Recent Blogs</h1>
-        <RecentBlogs posts={posts}/>
-        <Footer />
       </div>
+    </div>
+
+          <h1 className="tablet:m-10 mob:mt-10 tablet:mt-19 text-2xl font-bold"> Recent Blogs</h1>
+          <RecentBlogs posts={posts} showSeeMoreButton={showSeeMoreButton} />
+          <Footer />
+  
+        </div>
     </div>
   );
 }

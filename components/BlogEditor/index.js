@@ -43,11 +43,11 @@ const BlogEditor = ({ post, close, refresh }) => {
 
   return (
     <div
-      className={`fixed z-10 w-screen h-screen overflow-auto top-0 flex flex-col items-center ${
+      className={`fixed z-10 w-screen h-screen overflow-auto top-0 flex justify-center items-start${
         theme === "dark" ? "bg-black" : "bg-black"
       }`}
     >
-      <div className="container my-20">
+      <div className="container my-20" style={{ marginLeft: '-1rem'}}>
         <div className="mt-10">
           <div className="z-10 sticky top-12">
             <div className="flex items-center justify-between">

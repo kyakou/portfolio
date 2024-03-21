@@ -47,7 +47,7 @@ const Edit = () => {
           imageSrc:
             "https://images.unsplash.com/photo-1517479149777-5f3b1511d5ad?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTAyfHxwYXN0ZWx8ZW58MHx8MHw%3D&auto=format&fit=crop&w=400&q=60",
 
-          url: "www.quran.com",
+          url: "www.google.com",
         },
       ],
     });
@@ -104,7 +104,7 @@ const Edit = () => {
         {
           id: uuidv4(),
           title: "New Link",
-          link: "www.quran.com",
+          link: "www.google.com",
         },
       ],
     });
@@ -192,12 +192,14 @@ const Edit = () => {
             >
               Social
             </Button>
-            <Button
-              onClick={() => setCurrentTabs("RESUME")}
-              type={currentTabs === "RESUME" && "primary"}
-            >
-              Resume
-            </Button>
+            {data.showResume && (
+              <Button
+                onClick={() => setCurrentTabs("RESUME")}
+                type={currentTabs === "RESUME" && "primary"}
+              >
+                Resume
+              </Button>
+            )}
           </div>
         </div>
         {/* HEADER */}
@@ -541,6 +543,44 @@ const Edit = () => {
                 </div>
               </>
             ))}
+            <div className="mt-5 flex items-center">
+              <label className="w-1/5 text-lg opacity-50">Show YouTube</label>
+              <div className="w-4/5 ml-10 flex items-center">
+                <Button
+                  onClick={() => setData({ ...data, showYouTube: true })}
+                  type={data.showYouTube && "primary"}
+                >
+                  Yes
+                </Button>
+                <Button
+                  onClick={() => setData({ ...data, showYouTube: false })}
+                  classes={
+                    !data.showYouTube && "bg-red-500 text-white hover:bg-red-600"
+                  }
+                >
+                  No
+                </Button>
+              </div>
+            </div>
+            <div className="mt-5 flex items-center">
+              <label className="w-1/5 text-lg opacity-50">Show Instagram</label>
+              <div className="w-4/5 ml-10 flex items-center">
+                <Button
+                  onClick={() => setData({ ...data, showInstagram: true })}
+                  type={data.showInstagram && "primary"}
+                >
+                  Yes
+                </Button>
+                <Button
+                  onClick={() => setData({ ...data, showInstagram: false })}
+                  classes={
+                    !data.showInstagram && "bg-red-500 text-white hover:bg-red-600"
+                  }
+                >
+                  No
+                </Button>
+              </div>
+            </div>
             <div className="my-10">
               <Button onClick={addSocials} type="primary">
                 Add Social +

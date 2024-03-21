@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../Button";
 
-import yourData from "../../data/portfolio.json";
+import data from "../../data/portfolio.json";
 
 const Socials = ({ className }) => {
 
@@ -29,17 +29,30 @@ const Socials = ({ className }) => {
         </div>
       </Button>
 
-      <Button
-        onClick={() => window.open("https://www.instagram.com/aliezazhar", '_blank')}
-      >
-        <div>
-          <img className="h-5" src={`/images/ig.svg`} alt="Instagram"></img>
-        </div>
-      </Button>
-      
-      {yourData.socials.map((social, index) => (
+      {data.showInstagram && (
         <Button
-          key={social.id || index} // Preferred to use a unique id if available
+          onClick={() => window.open("https://www.instagram.com/aliezazhar", '_blank')}
+        >
+          <div>
+            <img className="h-5" src={`/images/ig.svg`} alt="Instagram"></img>
+          </div>
+        </Button>
+      )}
+      
+      {data.showYouTube && (
+        <Button
+          onClick={() => window.open("https://www.youtube.com/@alieazhar", '_blank')}
+        >
+          <div>
+            <img className="h-7" src={`/images/yt.svg`} alt="YouTube"></img>
+          </div>
+        </Button>
+      )}
+
+
+      {data.socials.map((social, index) => (
+        <Button
+          key={social.id || index}
         >
           {social.title}
         </Button>

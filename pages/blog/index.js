@@ -84,7 +84,7 @@ const Blog = ({ posts }) => {
               {posts &&
                 posts.map((post) => (
                   <div
-                    className="cursor-pointer relative"
+                    className="cursor-pointer relative overflow-hidden rounded-lg transition-all ease-out duration-300 hover:scale-110"
                     key={post.slug}
                     onClick={() => Router.push(`/blog/${post.slug}`)}
                   >
@@ -93,9 +93,11 @@ const Blog = ({ posts }) => {
                       src={post.image}
                       alt={post.title}
                     ></img>
-                    <h2 className="mt-5 text-4xl">{post.title}</h2>
-                    <p className="mt-2 opacity-50 text-lg">{post.preview}</p>
-                    <span className="text-sm mt-5 opacity-25">
+                    <h2 className="mt-5 text-2xl font-bold">{post.title}</h2>
+                      <p className="mt-2 mb-2 opacity-50 text-lg">
+                        {post.preview.length > 150 ? `${post.preview.substring(0, 147)}...` : post.preview}
+                      </p>
+                    <span className="text-sm mt-5 opacity-25 mb-2">
                       {ISOToDate(post.date)}
                     </span>
                     {process.env.NODE_ENV === "development" && mounted && (
