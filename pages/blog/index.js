@@ -26,7 +26,7 @@ const Blog = ({ posts }) => {
 
   useEffect(() => {
     setMounted(true);
-  }, [router]);  
+  }, []);
 
   const createBlog = () => {
     if (process.env.NODE_ENV === "development") {
@@ -84,7 +84,7 @@ const Blog = ({ posts }) => {
               {posts &&
                 posts.map((post) => (
                   <div
-                    className="cursor-pointer relative overflow-hidden rounded-lg transition-all ease-out duration-300 hover:scale-110"
+                    className="cursor-pointer relative overflow-hidden rounded-lg shadow-lg transition-all ease-out duration-300 hover:scale-110"
                     key={post.slug}
                     onClick={() => Router.push(`/blog/${post.slug}`)}
                   >
@@ -94,7 +94,7 @@ const Blog = ({ posts }) => {
                       alt={post.title}
                     ></img>
                     <h2 className="mt-5 text-2xl font-bold">{post.title}</h2>
-                      <p className="mt-2 mb-2 opacity-50 text-lg">
+                      <p className="mt-2 opacity-50 text-lg">
                         {post.preview.length > 150 ? `${post.preview.substring(0, 147)}...` : post.preview}
                       </p>
                     <span className="text-sm mt-5 opacity-25 mb-2">
