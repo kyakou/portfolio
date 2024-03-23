@@ -26,7 +26,7 @@ const Blog = ({ posts }) => {
 
   useEffect(() => {
     setMounted(true);
-  }, []);
+  }, [router]);  
 
   const createBlog = () => {
     if (process.env.NODE_ENV === "development") {
