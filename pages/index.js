@@ -11,6 +11,7 @@ import Button from "../components/Button";
 import Link from "next/link";
 import Cursor from "../components/Cursor";
 import { useEffect, useState } from 'react';
+import AboutCard from "../components/AboutCard";
 
 
 // Local Data
@@ -178,19 +179,17 @@ export default function Home({ posts, totalPostsCount }) {
             </Link>
           </div>
         )}
+
     <div className="laptop:w-3/5">
       <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={aboutRef}>
-        <h1 className="tablet:m-10 text-2xl font-bold">
-          <strong>About</strong>
-        </h1>
-        <div className="tablet:m-10 mt-2 text-s laptop:text-m overflow-hidden rounded-lg shadow-lg transition-all ease-out duration-300 hover:scale-105">
-            👋 <strong>I&rsquo;m Ali Azhar,</strong> an aspiring developer and a passionate engineering student at <strong>Langara College</strong>. Whether it&rsquo;s through the tech that I create or the volunteer work that I do, every project and initiative I undertake is driven by my desire to make the world a better place. 
-            I&rsquo;m always looking for opportunities for learning and growth, be it through formal education, hands-on projects, or collaborative experiences with peers and mentors in the field.
-            <br></br>
-            <br></br>🚀 I am one of the Founders of <strong>Inspired 2 Uplift</strong>, a nonprofit dedicated to empowering youth with disabilities and fighting the battle against societal stigmas around disability. I am the Logistics Chair of the <strong>Richmond Youth Foundation</strong>, where I lead a team of volunteers and spearhead projects designed to get Richmond youth more involved with community initiatives and nonprofit work. In my spare time, I enjoy learning about robotics, AI, and the technology of the future.
-            <br></br>
-            <br></br>✉️ Feel free to reach out if you have any questions, opportunities, or just want to talk! I&rsquo;m always open to exploring collaborations, sharing insights, or lending a helping hand in projects that aim to make a meaningful impact! <strong>Let&rsquo;s create something amazing together!</strong>
-        </div>
+          <AboutCard title={"About"}>
+              👋 <strong>I&rsquo;m Ali Azhar,</strong> an aspiring developer and a passionate engineering student at <strong>Langara College</strong>. Whether it&rsquo;s through the tech that I create or the volunteer work that I do, every project and initiative I undertake is driven by my desire to make the world a better place. 
+              I&rsquo;m always looking for opportunities for learning and growth, be it through formal education, hands-on projects, or collaborative experiences with peers and mentors in the field.
+              <br></br>
+              <br></br>🚀 I am one of the Founders of <strong>Inspired 2 Uplift</strong>, a nonprofit dedicated to empowering youth with disabilities and fighting the battle against societal stigmas around disability. I am the Logistics Chair of the <strong>Richmond Youth Foundation</strong>, where I lead a team of volunteers and spearhead projects designed to get Richmond youth more involved with community initiatives and nonprofit work. In my spare time, I enjoy learning about robotics, AI, and the technology of the future.
+              <br></br>
+              <br></br>✉️ Feel free to reach out if you have any questions, opportunities, or just want to talk! I&rsquo;m always open to exploring collaborations, sharing insights, or lending a helping hand in projects that aim to make a meaningful impact! <strong>Let&rsquo;s create something amazing together!</strong>
+          </AboutCard>
       </div>
     </div>
 

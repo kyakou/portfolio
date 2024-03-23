@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Router from 'next/router';
 import Button from "../Button";
 import ButtonGradient from "../ButtonGradient";
-import { ISOToDate } from '../../utils'; // Make sure this path is correct
+import { ISOToDate } from '../../utils';
 import ButtonPlain from '../ButtonPlain';
 
 const RecentBlogs = ({ posts, showSeeMoreButton }) => {
@@ -15,6 +15,13 @@ const RecentBlogs = ({ posts, showSeeMoreButton }) => {
     console.error('RecentBlogs: `posts` is not an array.', posts);
     return <p>Incorrect data format for blog posts.</p>;
   }
+
+  useEffect(() => {
+    // Prefetch all blog pages
+    posts.forEach(post => {
+      Router.prefetch(`/blog/${post.slug}`);
+    });
+  }, [posts]);
 
   return (
     <div className="mt-10 grid grid-cols-1 mob:grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 justify-between gap-10 tablet:m-10">
@@ -48,7 +55,7 @@ const RecentBlogs = ({ posts, showSeeMoreButton }) => {
           >
             See More Blogs
           </Button> */}
-          <ButtonPlain onClick={() => Router.push('/blog')} >View all blogs</ButtonPlain>
+          <ButtonGradient onClick={() => Router.push('/blog')} >View all blogs</ButtonGradient>
         </div>
       )}
     </div>

@@ -12,6 +12,7 @@ import { useRouter } from "next/router";
 import Cursor from "../../components/Cursor";
 import data from "../../data/portfolio.json";
 import { ISOToDate } from "../../utils";
+import Image from 'next/image';
 
 const BlogPost = ({ post }) => {
   const [showEditor, setShowEditor] = useState(false);
@@ -40,11 +41,15 @@ const BlogPost = ({ post }) => {
       >
         <Header isBlog={true} />
         <div className="mt-10 flex flex-col">
-          <img
-            className="w-full h-96 rounded-lg shadow-lg object-cover"
+        <div className="relative w-full h-96 rounded-lg shadow-lg overflow-hidden">
+          <Image
             src={post.image}
             alt={post.title}
-          ></img>
+            layout="fill"
+            objectFit="cover"
+            className="object-cover"
+          />
+        </div>
           <h1
             ref={textOne}
             className="mt-10 mb-2 text-4xl mob:text-xl laptop:text-6xl font-bold"
@@ -59,6 +64,7 @@ const BlogPost = ({ post }) => {
           </h2>
           <h3 ref={textThree} className="mt-2 tablet:text-l max-w-4xl mob:text-s text-darkgray opacity-30" style={{ fontSize: "smaller",color: "rgba(255, 255, 255, 0.5)" }}>
             {ISOToDate(post.date)}
+            {post.file}--file
           </h3>
         </div>
         <div ref={textFour}>
@@ -94,6 +100,7 @@ export async function getStaticProps({ params }) {
     "preview",
     "image",
     "content",
+    "file",
   ]);
 
   return {

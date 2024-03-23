@@ -1,15 +1,85 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 @import "./markdown.css";
 
-* {
-  font-family: "Open Sans";
+body {
+  @apply text-white;
+  background-color: #080808;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/Regular/OpenSans-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: url('/fonts/Italic/OpenSans-Italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: url('/fonts/Light/OpenSans-Light.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 300;
+  src: url('/fonts/LightItalic/OpenSans-LightItalic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: url('/fonts/Semibold/OpenSans-Semibold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 600;
+  src: url('/fonts/SemiboldItalic/OpenSans-SemiboldItalic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/fonts/Bold/OpenSans-Bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: url('/fonts/BoldItalic/OpenSans-BoldItalic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 800;
+  src: url('/fonts/ExtraBold/OpenSans-ExtraBold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 800;
+  src: url('/fonts/ExtraBoldItalic/OpenSans-ExtraBoldItalic.woff2') format('woff2');
 }
 
 body {
-  @apply dark:bg-black dark:text-white;
+  font-family: 'Open Sans', Arial, sans-serif;
 }
 
 .gradient-circle, .gradient-circle-bottom {
@@ -100,4 +170,16 @@ body {
 
 .text-bold {
   font-weight: bold;
+}
+
+.custom-shadow {
+  transition: all 0.3s ease-out;
+  /* Adjust the 4th value (spread) to a negative number to tighten the shadow closer to the box */
+  /* The 2nd and 3rd values are vertical and horizontal offset, the 4th is blur, the 5th is spread */
+  box-shadow: 0px 8px 30px -20px rgba(0, 0, 0, 0.2);
+}
+
+.custom-shadow:hover {
+  /* This scales the entire card, including the shadow */
+  transform: scale(1.05);
 }
