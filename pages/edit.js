@@ -148,7 +148,7 @@ const Edit = () => {
   return (
     <div className={`container mx-auto ${data.showCursor && "cursor-none"}`}>
       <Header isBlog></Header>
-      {data.showCursor && <Cursor />}
+      {data.showCursor}
       <div className="mt-10">
         <div className={`${theme === "dark" ? "bg-transparent" : "bg-transparent"}`}>
           <div className="flex items-center justify-between">
@@ -316,25 +316,6 @@ const Edit = () => {
                   onClick={() => setData({ ...data, showResume: false })}
                   classes={
                     !data.showResume && "bg-red-500 text-white hover:bg-red-600"
-                  }
-                >
-                  No
-                </Button>
-              </div>
-            </div>
-            <div className="mt-5 flex items-center">
-              <label className="w-1/5 text-lg opacity-50">Custom Cursor</label>
-              <div className="w-4/5 ml-10 flex items-center">
-                <Button
-                  onClick={() => setData({ ...data, showCursor: true })}
-                  type={data.showCursor && "primary"}
-                >
-                  Yes
-                </Button>
-                <Button
-                  onClick={() => setData({ ...data, showCursor: false })}
-                  classes={
-                    !data.showCursor && "bg-red-500 text-white hover:bg-red-600"
                   }
                 >
                   No
