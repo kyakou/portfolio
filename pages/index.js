@@ -74,7 +74,7 @@ export default function Home({ posts, totalPostsCount }) {
 
   return (
     <div className={`relative ${data.showCursor && "cursor-none"}`}>
-      {data.showCursor && <Cursor />}
+      {data.showCursor}
       <Head>
         <title>Ali | Home</title>
       </Head>
