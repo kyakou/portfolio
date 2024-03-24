@@ -9,6 +9,13 @@ body {
 }
 
 @font-face {
+  font-family: 'W95FA';
+  font-style: normal;
+  font-weight: 300;
+  src: url('/fonts/WIN95FA/WIN95FA.woff2') format('woff2');
+}
+
+@font-face {
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 400;
@@ -138,19 +145,18 @@ body {
 @media screen and (min-aspect-ratio: 16/10) {
   body {
     box-sizing: border-box;
-    width: calc(100% - 5vw); /* Adjust width to account for padding */
+    width: calc(100% - 5vw);
     padding-left: 5vw;
     padding-right: 5vw;
-    margin: 0 auto; /* Center the content */
-    overflow-x: hidden; /* Hide horizontal overflow */
+    margin: 0 auto;
+    overflow-x: hidden;
   }
 }
 
 .glow {
-  color: #F0F0F0; /* Light grey text color, adjust as needed */
+  color: #F0F0F0;
 }
 
-/* Project card height */
 .project-height {
   height: 300px;
 }
@@ -180,6 +186,5 @@ body {
 }
 
 .custom-shadow:hover {
-  /* This scales the entire card, including the shadow */
   transform: scale(1.05);
 }

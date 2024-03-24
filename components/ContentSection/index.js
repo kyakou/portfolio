@@ -1,5 +1,9 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
+import remarkBreaks from "remark-breaks";
+import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dracula } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
@@ -25,7 +29,12 @@ const CodeBlock = {
 
 const ContentSection = ({ content }) => {
   return (
-    <ReactMarkdown components={CodeBlock} className="markdown-class">
+    <ReactMarkdown
+    components={CodeBlock}
+      remarkPlugins={[remarkBreaks, remarkGfm, remarkMath]}
+      rehypePlugins={[rehypeKatex]}
+      className="markdown-class"
+    >
       {content}
     </ReactMarkdown>
   );

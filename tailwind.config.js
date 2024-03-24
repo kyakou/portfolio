@@ -11,6 +11,7 @@ module.exports = {
       laptop: "1024px",
       desktop: "1280px",
       laptopl: "1440px",
+      se: "375px",
     },
     extend: {},
   },

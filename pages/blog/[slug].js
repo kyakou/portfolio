@@ -9,7 +9,6 @@ import { stagger } from "../../animations";
 import Button from "../../components/Button";
 import BlogEditor from "../../components/BlogEditor";
 import { useRouter } from "next/router";
-import Cursor from "../../components/Cursor";
 import data from "../../data/portfolio.json";
 import { ISOToDate } from "../../utils";
 import Image from 'next/image';
@@ -40,35 +39,36 @@ const BlogPost = ({ post }) => {
         }`}
       >
         <Header isBlog={true} />
-        <div className="mt-10 flex flex-col">
-        <div className="relative w-full h-96 rounded-lg shadow-lg overflow-hidden">
-          <Image
-            src={post.image}
-            alt={post.title}
-            layout="fill"
-            objectFit="cover"
-            className="object-cover"
-          />
-        </div>
+        {/* Adjust the following div for centering */}
+        <div className="mx-auto mob:w-5/6 laptop:w-3/5">
+          <div className="relative w-full h-96 rounded-lg shadow-lg overflow-hidden">
+            <Image
+              src={post.image}
+              alt={post.title}
+              layout="fill"
+              objectFit="cover"
+              className="object-cover"
+            />
+          </div>
           <h1
             ref={textOne}
-            className="mt-10 mb-2 text-4xl mob:text-xl laptop:text-6xl font-bold"
+            className="mt-10 mb-2 text-4xl mob:text-xl laptop:text-4xl font-bold"
           >
             {post.title}
           </h1>
           <h2
             ref={textTwo}
-            className="mt-2 mb-2 text-l max-w-4xl text-darkgray opacity-50"
+            className="mt-4 mb-2 text-l max-w-4xl text-darkgray opacity-50"
           >
             {post.tagline}
           </h2>
           <h3 ref={textThree} className="mt-2 tablet:text-l max-w-4xl mob:text-s text-darkgray opacity-30" style={{ fontSize: "smaller",color: "rgba(255, 255, 255, 0.5)" }}>
             {ISOToDate(post.date)}
-            {post.file}--file
+            <br></br>{post.file}
           </h3>
-        </div>
-        <div ref={textFour}>
-        <ContentSection content={post.content}></ContentSection>
+          <div ref={textFour} className="text-l">
+            <ContentSection content={post.content}></ContentSection>
+          </div>
         </div>
       </div>
       {process.env.NODE_ENV === "development" && (

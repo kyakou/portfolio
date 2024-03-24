@@ -9,7 +9,6 @@ import Footer from "../components/Footer";
 import Head from "next/head";
 import Button from "../components/Button";
 import Link from "next/link";
-import Cursor from "../components/Cursor";
 import { useEffect, useState } from 'react';
 import AboutCard from "../components/AboutCard";
 
@@ -89,7 +88,7 @@ export default function Home({ posts, totalPostsCount }) {
           handleAboutScroll={handleAboutScroll}
         />
         <div className="laptop:mt-10 mt-10">
-          <div className="mt-5">
+          <div className="mt-5 mob:ml-3">
             <h1
               ref={textOne}
               className="text-3xl tablet:text-6xl laptop:text-6xl laptopl:text-8xl p-1 tablet:p-2 font-semibold w-4/5 mob:w-full laptop:w-4/5"
@@ -115,11 +114,11 @@ export default function Home({ posts, totalPostsCount }) {
               {data.headerTaglineFour}
             </h1>
           </div>
-          <div>
+          <div className="mob:ml-3">
           <Socials className="mt-2 mob:mt-8 laptop:mt-5" />
           </div>
         </div>
-        <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={workRef}>
+        <div className="mt-10 laptop:mt-30 p-2 laptop:p-0 mob:ml-2 mob:mr-2" ref={workRef}>
           <h1 className="text-2xl font-bold"><strong>Work</strong></h1>
 
           <div className="mt-5 laptop:mt-10 grid grid-cols-1 tablet:grid-cols-2 gap-4 justify-center">
@@ -181,7 +180,7 @@ export default function Home({ posts, totalPostsCount }) {
         )}
 
     <div className="laptop:w-3/5">
-      <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={aboutRef}>
+      <div className="laptop:mt-30 p-2 laptop:p-0" ref={aboutRef}>
           <AboutCard title={"About"}>
               👋 <strong>I&rsquo;m Ali Azhar,</strong> an aspiring developer and a passionate engineering student at <strong>Langara College</strong>. Whether it&rsquo;s through the tech that I create or the volunteer work that I do, every project and initiative I undertake is driven by my desire to make the world a better place. 
               I&rsquo;m always looking for opportunities for learning and growth, be it through formal education, hands-on projects, or collaborative experiences with peers and mentors in the field.
@@ -192,9 +191,9 @@ export default function Home({ posts, totalPostsCount }) {
           </AboutCard>
       </div>
     </div>
-
-          <h1 className="tablet:m-10 mob:mt-10 tablet:mt-19 text-2xl font-bold"> Recent Blogs</h1>
-          <RecentBlogs posts={posts} showSeeMoreButton={showSeeMoreButton} />
+        
+          <h1 className="tablet:m-10 mob:mt-10 tablet:mt-19 text-2xl font-bold mob:ml-6 mob:mr-6"> Recent Blogs</h1>
+          <div className="mob:ml-6 mob:mr-6"><RecentBlogs posts={posts} showSeeMoreButton={showSeeMoreButton} /></div>
           <Footer />
   
         </div>
