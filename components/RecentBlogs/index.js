@@ -1,9 +1,13 @@
 import React from 'react';
 import Router from 'next/router';
-import Button from "../Button";
-import ButtonGradient from "../ButtonGradient";
-import { ISOToDate } from '../../utils'; // Make sure this path is correct
-import ButtonPlain from '../ButtonPlain';
+import { ISOToDate } from '../../utils';
+import ButtonGradient from '../ButtonGradient';
+
+const placeholderImages = [
+  'https://images.unsplash.com/photo-1710525026358-cefacd2c228d?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
+  'https://images.unsplash.com/photo-1653832920174-1f333e009b62?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  'https://images.unsplash.com/photo-1709895353959-5e170f933758?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+];
 
 const RecentBlogs = ({ posts, showSeeMoreButton }) => {
   if (!posts) {
@@ -16,6 +20,20 @@ const RecentBlogs = ({ posts, showSeeMoreButton }) => {
     return <p>Incorrect data format for blog posts.</p>;
   }
 
+  const getRandomPlaceholderImage = () => {
+    return placeholderImages[Math.floor(Math.random() * placeholderImages.length)];
+  };
+
+  const getPreviewText = (post) => {
+    if (post.preview && post.preview.length >= 140) {
+        return post.preview.substring(0, 140) + '...';
+    } else if (post.preview && post.preview.length < 140) {
+        return post.preview;
+    } else {
+        return post.content ? post.content.substring(0, 140) + '...' : 'No preview available...';
+    }
+};
+
   return (
     <div className="mt-10 grid grid-cols-1 mob:grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 justify-between gap-10 tablet:m-10">
       {posts.map((post) => (
@@ -26,13 +44,13 @@ const RecentBlogs = ({ posts, showSeeMoreButton }) => {
         >
           <img
             className="w-full h-40 object-cover transition-all ease-out duration-300"
-            src={post.image}
+            src={post.image || getRandomPlaceholderImage()}
             alt={post.title}
           />
           <div className="p-4">
             <h2 className="text-xl font-semibold">{post.title}</h2>
             <p className="mt-2 mb-2 opacity-50 text-m">
-              {post.preview.length > 130 ? post.preview.substring(0, 130) + '...' : post.preview}
+              {getPreviewText(post)}
             </p>
             <span className="text-sm mt-5 opacity-25">
               {ISOToDate(post.date)}
@@ -42,13 +60,7 @@ const RecentBlogs = ({ posts, showSeeMoreButton }) => {
       ))}
       {showSeeMoreButton && (
         <div className="col-span-full flex justify-center mt-1">
-          {/* <Button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded button-85"
-            onClick={() => Router.push('/blog')}
-          >
-            See More Blogs
-          </Button> */}
-          <ButtonGradient onClick={() => Router.push('/blog')} >View all blogs</ButtonGradient>
+          <ButtonGradient onClick={() => Router.push('/blog')}>View all blogs</ButtonGradient>
         </div>
       )}
     </div>

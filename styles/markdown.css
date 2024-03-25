@@ -3,7 +3,7 @@
 /* Markdown Container */
 
 .markdown-class {
-  @apply mt-5 p-5;
+  @apply mt-2 p-5;
 }
 
 /* Headings */
@@ -32,7 +32,7 @@
 }
 
 .markdown-class p {
-  @apply mt-2 opacity-80 leading-7 font-normal text-base;
+  @apply mt-5 opacity-80 leading-7 font-normal text-base;
 }
 
 .markdown-class strong {
@@ -46,21 +46,32 @@
 
 
 /* Markdown Lists */
-
-.markdown-class ol {
-  @apply mt-5 ml-5;
-}
-
-.markdown-class ol li {
-  @apply text-base opacity-80 list-decimal;
-}
-
+/* Base styles for unordered lists */
 .markdown-class ul {
-  @apply mt-5 ml-5;
+  @apply list-disc ml-5;
 }
 
-.markdown-class ul li {
-  @apply text-base opacity-80 list-disc;
+/* Base styles for ordered lists */
+.markdown-class ol {
+  @apply list-decimal mt-2 ml-5;
+}
+
+/* Nested lists: Adjusting for proper indentation and list style */
+.markdown-class ul ul, .markdown-class ul ol,
+.markdown-class ol ul, .markdown-class ol ol {
+  @apply mt-2 ml-4;
+}
+
+/* List item spacing for better readability */
+.markdown-class li {
+  @apply mt-2 mb-2;
+}
+
+/* Assuming task list items have a checkbox input as a direct child */
+.markdown-class ul li input[type="checkbox"] {
+  /* Hide the default list bullet */
+  list-style-type: none;
+  margin-left: -1.2em; /* Adjust as needed */
 }
 
 /* BlockQuote */
@@ -79,4 +90,53 @@
 
 .markdown-class img {
   @apply max-h-96 w-full my-5 object-cover rounded-lg shadow-lg;
+}
+
+/* Table */
+.markdown-class table {
+  @apply min-w-full divide-y divide-gray-200 rounded-lg overflow-hidden shadow-lg border-collapse;
+  font-family: sans-serif; /* Ensure consistent font family for the whole table */
+}
+
+/* Adjusting header styles */
+.markdown-class th {
+  @apply bg-gray-300 px-6 py-3 text-left text-sm font-medium text-gray-500; /* Darker grey for header background */
+  vertical-align: bottom;
+}
+
+/* Adjusting cell styles */
+.markdown-class td {
+  @apply px-6 py-3 whitespace-nowrap text-sm text-gray-500;
+}
+
+.markdown-class thead th:first-child {
+  @apply rounded-tl-lg;
+}
+
+.markdown-class thead th:last-child {
+  @apply rounded-tr-lg;
+}
+
+/* Correcting the rounded corners for the last row */
+.markdown-class tbody tr:last-child td:first-child {
+  @apply rounded-bl-lg;
+}
+
+.markdown-class tbody tr:last-child td:last-child {
+  @apply rounded-br-lg;
+}
+
+/* Ensure table borders are included for rows and columns */
+.markdown-class tbody tr td, .markdown-class thead th {
+  @apply border border-gray-200;
+}
+
+/* Adjust borders to ensure right and bottom borders are present */
+.markdown-class tbody tr td:last-child {
+  @apply border-r border-gray-200; /* Ensure right border is present */
+}
+
+/* Specifically ensure the bottom borders are present for the last row */
+.markdown-class tbody tr:last-child td {
+  @apply border-b border-gray-200; /* Ensure bottom border is present for the last row's cells */
 }

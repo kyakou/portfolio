@@ -12,7 +12,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
   const [headerOpacity, setHeaderOpacity] = useState(1);
   const [mounted, setMounted] = useState(false);
 
-  const { name, showBlog, showResume } = data;
+  const { name, showBlog, showResume, showGradient } = data;
 
   useEffect(() => {
     setMounted(true);

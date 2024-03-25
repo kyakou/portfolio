@@ -12,6 +12,7 @@ import { useRouter } from "next/router";
 import data from "../../data/portfolio.json";
 import { ISOToDate } from "../../utils";
 import Image from 'next/image';
+import 'katex/dist/katex.min.css';
 
 const BlogPost = ({ post }) => {
   const [showEditor, setShowEditor] = useState(false);
@@ -64,7 +65,7 @@ const BlogPost = ({ post }) => {
           </h2>
           <h3 ref={textThree} className="mt-2 tablet:text-l max-w-4xl mob:text-s text-darkgray opacity-30" style={{ fontSize: "smaller",color: "rgba(255, 255, 255, 0.5)" }}>
             {ISOToDate(post.date)}
-            <br></br>{post.file}
+            {/* <br></br>{post.file} */}
           </h3>
           <div ref={textFour} className="text-l">
             <ContentSection content={post.content}></ContentSection>

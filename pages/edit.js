@@ -3,6 +3,7 @@ import Button from "../components/Button";
 import Header from "../components/Header";
 import { v4 as uuidv4 } from "uuid";
 import { useTheme } from "next-themes";
+import Switcher from "../components/Switcher";
 
 // Data
 import yourData from "../data/portfolio.json";
@@ -20,7 +21,7 @@ const Edit = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(data, null, 2),
       });
     } else {
       alert("This thing only works in development mode.");
@@ -146,13 +147,14 @@ const Edit = () => {
   };
 
   return (
-    <div className={`container mx-auto ${data.showCursor && "cursor-none"}`}>
+    <div className={`container mx-auto mb-5 ${data.showCursor && "cursor-none"}`}>
       <Header isBlog></Header>
       {data.showCursor}
       <div className="mt-10">
         <div className={`${theme === "dark" ? "bg-transparent" : "bg-transparent"}`}>
           <div className="flex items-center justify-between">
-            <h1 className="text-4xl">Dashboard</h1>
+            {/* <h1 className="text-4xl">您不应该在这里。</h1> */}
+            <Switcher center={false} />
             <div className="flex items-center">
               <Button onClick={saveData} type="primary">
                 Save
@@ -160,7 +162,9 @@ const Edit = () => {
             </div>
           </div>
 
-          <div className="flex items-center">
+          {/* <h2 className="text-l mt-1">You shouldn't be here.</h2> */}
+
+          <div className="flex items-center mt-3">
             <Button
               onClick={() => setCurrentTabs("HEADER")}
               type={currentTabs === "HEADER" && "primary"}
@@ -179,12 +183,12 @@ const Edit = () => {
             >
               Services
             </Button>
-            <Button
+            {/* <Button
               onClick={() => setCurrentTabs("ABOUT")}
               type={currentTabs === "ABOUT" && "primary"}
             >
               About
-            </Button>
+            </Button> */}
             <Button
               onClick={() => setCurrentTabs("SOCIAL")}
               type={currentTabs === "SOCIAL" && "primary"}
@@ -316,6 +320,25 @@ const Edit = () => {
                   onClick={() => setData({ ...data, showResume: false })}
                   classes={
                     !data.showResume && "bg-red-500 text-white hover:bg-red-600"
+                  }
+                >
+                  No
+                </Button>
+              </div>
+            </div>
+            <div className="mt-5 flex items-center">
+              <label className="w-1/5 text-lg opacity-50">Show Gradient</label>
+              <div className="w-4/5 ml-10 flex items-center">
+                <Button
+                  onClick={() => setData({ ...data, showGradient: true })}
+                  type={data.showGradient && "primary"}
+                >
+                  Yes
+                </Button>
+                <Button
+                  onClick={() => setData({ ...data, showGradient: false })}
+                  classes={
+                    !data.showGradient && "bg-red-500 text-white hover:bg-red-600"
                   }
                 >
                   No
