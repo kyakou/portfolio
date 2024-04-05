@@ -73,49 +73,54 @@ const Blog = ({ posts }) => {
         >
           <Header isBlog={true}></Header>
           <div className="mt-10">
-            <h1
-              ref={text}
-              className="mx-auto mob:p-2 text-bold text-6xl laptop:text-8xl w-full"
-            >
-              <strong>Blog</strong>
-            </h1>
-            <div className="mt-10 grid grid-cols-1 mob:grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 justify-between gap-10">
-              {posts &&
-                posts.map((post) => (
-                  <div
-                    className="cursor-pointer relative overflow-hidden rounded-lg shadow-lg transition-all ease-out duration-300 hover:scale-110"
-                    key={post.slug}
-                    onClick={() => Router.push(`/blog/${post.slug}`)}
-                  >
-                    <img
-                      className="w-full h-60 rounded-lg shadow-lg object-cover"
-                      src={post.image}
-                      alt={post.title}
-                    ></img>
-                    <h2 className="mt-5 text-2xl font-bold">{post.title}</h2>
-                      <p className="mt-2 opacity-50 text-lg">
-                        {post.preview.length > 150 ? `${post.preview.substring(0, 147)}...` : post.preview}
-                      </p>
-                    <span className="text-sm mt-5 opacity-25 mb-2">
-                      {ISOToDate(post.date)}
-                    </span>
-                    {process.env.NODE_ENV === "development" && mounted && (
-                      <div className="absolute top-0 right-0">
-                        <Button
-                          onClick={(e) => {
-                            deleteBlog(post.slug);
-                            e.stopPropagation();
-                          }}
-                          type={"primary"}
-                        >
-                          Delete
-                        </Button>
-                      </div>
-                    )}
-                  </div>
-                ))}
+  <h1
+    ref={text}
+    className="mx-auto mob:p-2 text-bold text-6xl laptop:text-8xl w-full"
+  >
+    <strong>Blog</strong>
+  </h1>
+  {posts.length > 0 ? (
+    <div className="mt-10 grid grid-cols-1 mob:grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 justify-between gap-10">
+      {posts.map((post) => (
+        <div
+          className="cursor-pointer relative overflow-hidden rounded-lg shadow-lg transition-all ease-out duration-300 hover:scale-110"
+          key={post.slug}
+          onClick={() => Router.push(`/blog/${post.slug}`)}
+        >
+          <img
+            className="w-full h-60 rounded-lg shadow-lg object-cover"
+            src={post.image}
+            alt={post.title}
+          />
+          <h2 className="mt-5 text-2xl font-bold">{post.title}</h2>
+          <p className="mt-2 opacity-50 text-lg">
+            {post.preview.length > 150 ? `${post.preview.substring(0, 147)}...` : post.preview}
+          </p>
+          <span className="text-sm mt-5 opacity-25 mb-2">
+            {ISOToDate(post.date)}
+          </span>
+          {process.env.NODE_ENV === "development" && mounted && (
+            <div className="absolute top-0 right-0">
+              <Button
+                onClick={(e) => {
+                  deleteBlog(post.slug);
+                  e.stopPropagation();
+                }}
+                type={"primary"}
+              >
+                Delete
+              </Button>
             </div>
-          </div>
+          )}
+        </div>
+      ))}
+    </div>
+  ) : (
+    <div className="mx-auto mob:p-2 mt-10 w-full">
+      <p>No blogs at the moment. Check back soon!</p>
+    </div>
+  )}
+</div>
         </div>
         {process.env.NODE_ENV === "development" && mounted && (
           <div className="fixed bottom-6 right-6">

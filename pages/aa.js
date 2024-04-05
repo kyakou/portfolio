@@ -6,7 +6,7 @@ import Switcher from '../components/Switcher';
 import Switcher2 from '../components/Switcher2';
 import Link from 'next/link';
 
-function aa() {
+function Aa() {
   const myTexts = [
     { textOne: "aliazhar."},
     { textOne: "您不应该在这里"},
@@ -53,4 +53,4 @@ function aa() {
   );
 }
 
-export default aa;
+export default Aa;
