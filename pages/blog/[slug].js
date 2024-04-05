@@ -37,10 +37,10 @@ const BlogPost = ({ post }) => {
       <div
         className={`container mx-auto mt-10 ${
           data.showCursor && "cursor-none"
-        }`}
+        }`} 
+        // style={{ backgroundColor: '#040404' }}
       >
         <Header isBlog={true} />
-        {/* Adjust the following div for centering */}
         <div className="mx-auto mob:w-5/6 laptop:w-3/5">
           <div className="relative w-full h-96 rounded-lg shadow-lg overflow-hidden">
             <Image

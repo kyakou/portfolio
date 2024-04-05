@@ -10,14 +10,9 @@ const placeholderImages = [
 ];
 
 const RecentBlogs = ({ posts, showSeeMoreButton }) => {
-  if (!posts) {
-    console.error('RecentBlogs: `posts` is undefined.');
-    return <p>Blog posts could not be found.</p>;
-  }
-
-  if (!Array.isArray(posts)) {
-    console.error('RecentBlogs: `posts` is not an array.', posts);
-    return <p>Incorrect data format for blog posts.</p>;
+  if (!posts || !Array.isArray(posts) || posts.length === 0) {
+    console.error('RecentBlogs: `posts` is undefined or not an array or empty.');
+    return null; // Returns nothing if no posts
   }
 
   const getRandomPlaceholderImage = () => {
@@ -26,44 +21,47 @@ const RecentBlogs = ({ posts, showSeeMoreButton }) => {
 
   const getPreviewText = (post) => {
     if (post.preview && post.preview.length >= 140) {
-        return post.preview.substring(0, 140) + '...';
+      return post.preview.substring(0, 140) + '...';
     } else if (post.preview && post.preview.length < 140) {
-        return post.preview;
+      return post.preview;
     } else {
-        return post.content ? post.content.substring(0, 140) + '...' : 'No preview available...';
+      return post.content ? post.content.substring(0, 140) + '...' : 'No preview available...';
     }
-};
+  };
 
   return (
-    <div className="mt-10 grid grid-cols-1 mob:grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 justify-between gap-10 tablet:m-10">
-      {posts.map((post) => (
-        <div
-          className="cursor-pointer relative overflow-hidden rounded-lg shadow-lg transition-all ease-out duration-300 hover:scale-110"
-          key={post.slug}
-          onClick={() => Router.push(`/blog/${post.slug}`)}
-        >
-          <img
-            className="w-full h-40 object-cover transition-all ease-out duration-300"
-            src={post.image || getRandomPlaceholderImage()}
-            alt={post.title}
-          />
-          <div className="p-4">
-            <h2 className="text-xl font-semibold">{post.title}</h2>
-            <p className="mt-2 mb-2 opacity-50 text-m">
-              {getPreviewText(post)}
-            </p>
-            <span className="text-sm mt-5 opacity-25">
-              {ISOToDate(post.date)}
-            </span>
+    <>
+      <h1 className="tablet:m-10 mob:mt-10 tablet:mt-19 text-2xl font-bold mob:ml-6 mob:mr-6">Recent Blogs</h1>
+      <div className="mt-10 grid grid-cols-1 mob:grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 justify-between gap-10 tablet:m-10">
+        {posts.map((post) => (
+          <div
+            className="cursor-pointer relative overflow-hidden rounded-lg shadow-lg transition-all ease-out duration-300 hover:scale-110"
+            key={post.slug}
+            onClick={() => Router.push(`/blog/${post.slug}`)}
+          >
+            <img
+              className="w-full h-40 object-cover transition-all ease-out duration-300"
+              src={post.image || getRandomPlaceholderImage()}
+              alt={post.title}
+            />
+            <div className="p-4">
+              <h2 className="text-xl font-semibold">{post.title}</h2>
+              <p className="mt-2 mb-2 opacity-50 text-m">
+                {getPreviewText(post)}
+              </p>
+              <span className="text-sm mt-5 opacity-25">
+                {ISOToDate(post.date)}
+              </span>
+            </div>
           </div>
-        </div>
-      ))}
-      {showSeeMoreButton && (
-        <div className="col-span-full flex justify-center mt-1">
-          <ButtonGradient onClick={() => Router.push('/blog')}>View all blogs</ButtonGradient>
-        </div>
-      )}
-    </div>
+        ))}
+        {showSeeMoreButton && (
+          <div className="col-span-full flex justify-center mt-1">
+            <ButtonGradient onClick={() => Router.push('/blog')}>View all blogs</ButtonGradient>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 

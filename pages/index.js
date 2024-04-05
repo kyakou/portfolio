@@ -10,6 +10,7 @@ import Head from "next/head";
 import Button from "../components/Button";
 import Link from "next/link";
 import { useEffect, useState } from 'react';
+import ButtonGradientBG from "../components/ButtonGradientBG";
 import AboutCard from "../components/AboutCard";
 
 
@@ -191,8 +192,6 @@ export default function Home({ posts, totalPostsCount }) {
           </AboutCard>
       </div>
     </div>
-        
-          <h1 className="tablet:m-10 mob:mt-10 tablet:mt-19 text-2xl font-bold mob:ml-6 mob:mr-6"> Recent Blogs</h1>
           <div className="mob:ml-6 mob:mr-6"><RecentBlogs posts={posts} showSeeMoreButton={showSeeMoreButton} /></div>
           <Footer />
   
