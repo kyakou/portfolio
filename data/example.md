@@ -87,7 +87,7 @@ $$
 \int_{0}^{\infty} e^{-x^2} dx = \frac{\sqrt{\pi}}{2} \\
 $$
 
-  The TrashTrack Pro is a smart trash can designed to help us make more informed
-  decisions about our waste and puts people on the path towards a greener
-  footprint. This blog (when its finished :P) talks about my experiences
-  conceptualizing and coding as the sole developer of the project. 
+The TrashTrack Pro is a smart trash can designed to help us make more informed
+decisions about our waste and puts people on the path towards a greener
+footprint. This blog (when its finished :P) talks about my experiences
+conceptualizing and coding as the sole developer of the project. 

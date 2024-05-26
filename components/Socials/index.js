@@ -21,7 +21,7 @@ const Socials = ({ className }) => {
       </Button>
 
       <Button
-        onClick={() => window.open("https://www.linkedin.com/in/-ali-azhar", '_blank')}
+        onClick={() => window.open("https://www.linkedin.com/in/alieazhar", '_blank')}
       >
         <div>
           {/* style={{ marginRight: '5px' } */}

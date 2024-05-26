@@ -47,7 +47,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                   </div>
                 </Button>
 
-                <Button onClick={() => window.open("https://www.linkedin.com/in/-ali-azhar/", '_blank')}>
+                <Button onClick={() => window.open("https://www.linkedin.com/in/alieazhar", '_blank')}>
                   <div style={{ marginRight: '10px' }}>
                     <img className="h-5" src={`/images/linkedin.png`}></img>
                   </div>
@@ -156,7 +156,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
             )}
             {mounted && theme && (
               <Button
-                onClick={() => window.open("https://www.linkedin.com/in/-ali-azhar/", '_blank')}
+                onClick={() => window.open("https://www.linkedin.com/in/alieazhar", '_blank')}
               >
                 <img
                   className="h-6"
@@ -192,7 +192,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
             )}
             {mounted && theme && (
               <Button
-                onClick={() => window.open("https://www.linkedin.com/in/-ali-azhar/", '_blank')}
+                onClick={() => window.open("https://www.linkedin.com/in/alieazhar", '_blank')}
               >
                 <img
                   className="h-6"

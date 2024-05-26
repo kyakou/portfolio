@@ -35,7 +35,8 @@
     "remark-math": "6",
     "styled-components": "^5.3.5",
     "tailwindcss": "^3.0.24",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "yarn": "^1.22.22"
   },
   "devDependencies": {
     "eslint": "8.15.0",

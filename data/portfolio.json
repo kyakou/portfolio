@@ -5,7 +5,7 @@
   "headerTaglineThree": "student and",
   "headerTaglineFour": "aspiring engineer!",
   "showCursor": false,
-  "showBlog": true,
+  "showBlog": false,
   "darkMode": false,
   "showResume": false,
   "socials": [
