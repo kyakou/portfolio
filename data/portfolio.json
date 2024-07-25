@@ -29,20 +29,6 @@
       "description": "The Richmond Youth Foundation funds community initiatives and gets youth more involved in nonprofit work.",
       "imageSrc": "https://raw.githubusercontent.com/kyakou/portfolio/main/public/images/ryf.jpeg",
       "url": "https://www.instagram.com/ryfoundation"
-    },
-    {
-      "id": "7b4dd0b0-b0ea-4261-87a6-6f1d39c72640",
-      "title": "TrashTrack Pro",
-      "description": "Arduino smart trash can created for our APSC 1010 final project.",
-      "imageSrc": "https://raw.githubusercontent.com/kyakou/portfolio/main/public/images/tpp_1.jpg",
-      "url": "blog/ttp"
-    },
-    {
-      "id": "02a175f2-2d02-4b82-b87b-a15fc34026f1",
-      "title": "Malaak",
-      "description": "Work in progress project!",
-      "imageSrc": "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
-      "url": ""
     }
   ],
   "services": [],
