@@ -4,21 +4,21 @@ const Switcher = ({ center = false }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [key, setKey] = useState(0);
   const texts = [
+    { textOne: "Settings", textTwo: "Remember to save." },
     { textOne: "您不应该在这里", textTwo: "You shouldn't be here" },
     { textOne: "وَٱلْعَصْرِ إِنَّ ٱلْإِنسَـٰنَ لَفِى خُسْرٍ", textTwo: "By time-- surely humanity is in grave loss" },
     { textOne: "落花流水", textTwo: "Fallen flowers and flowing water" },
     { textOne: "حَتَّىٰ زُرْتُمُ ٱلْمَقَابِرَ", textTwo: "Until you end up in your grave" },
     { textOne: "饮泣吞声", textTwo: "To drink tears and swallow sobs" },
-    { textOne: "وَرَحْمَتِى وَسِعَتْ كُلَّ شَىْءٍۢ", textTwo: "My mercy encompasses all things" },
+    { textOne: "وَرَحْمَتِى وَسِعَتْ كُلَّ شَىْءٍ", textTwo: "My mercy encompasses all things" },
     { textOne: "白发苍苍", textTwo: "White hair, vast and boundless" },
-   
   ];
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % texts.length);
       setKey(prevKey => prevKey + 1);
-    }, 4000);
+    }, 8000);
 
     return () => clearInterval(intervalId);
   }, [texts.length]);

@@ -67,7 +67,7 @@ const BlogPost = ({ post }) => {
             {ISOToDate(post.date)}
             {/* <br></br>{post.file} */}
           </h3>
-          <div ref={textFour} className="text-l">
+          <div ref={textFour} className="text-l ">
             <ContentSection content={post.content}></ContentSection>
           </div>
         </div>

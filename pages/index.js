@@ -2,6 +2,7 @@ import { useRef } from "react";
 import Header from "../components/Header";
 import ServiceCard from "../components/ServiceCard";
 import Socials from "../components/Socials";
+import ImageCard from "../components/ImageCard";
 import WorkCard from "../components/WorkCard";
 import { useIsomorphicLayoutEffect } from "../utils";
 import { stagger } from "../animations";
@@ -12,6 +13,7 @@ import Link from "next/link";
 import { useEffect, useState } from 'react';
 import ButtonGradientBG from "../components/ButtonGradientBG";
 import AboutCard from "../components/AboutCard";
+import { Container, Row, Column } from 'react-bootstrap';
 
 
 // Local Data
@@ -94,7 +96,7 @@ export default function Home({ posts, totalPostsCount }) {
           <div className="mt-5 mob:ml-3">
             <h1
               ref={textOne}
-              className="text-3xl tablet:text-6xl laptop:text-6xl laptopl:text-8xl p-1 tablet:p-2 font-semibold w-4/5 mob:w-full laptop:w-4/5"
+              className="text-3xl tablet:text-4xl laptop:text-4xl laptopl:text-4xl p-1 tablet:p-2 font-semibold w-4/5 mob:w-full laptop:w-4/5"
             >
               {data.headerTaglineOne}
             </h1>
@@ -121,7 +123,7 @@ export default function Home({ posts, totalPostsCount }) {
           <Socials className="mt-2 mob:mt-8 laptop:mt-5" />
           </div>
         </div>
-        <div className="mt-10 laptop:mt-30 p-2 laptop:p-0 mob:ml-2 mob:mr-2" ref={workRef}>
+        <div className="mt-10 laptop:mt-30 p-2 laptop:p-0 mob:ml-1 mob:mr-1" ref={workRef}>
           <h1 className="text-2xl font-bold"><strong>Work</strong></h1>
 
           <div className="mt-5 laptop:mt-10 grid grid-cols-1 tablet:grid-cols-2 gap-4 justify-center">
@@ -182,8 +184,10 @@ export default function Home({ posts, totalPostsCount }) {
           </div>
         )}
 
-    <div className="laptop:w-3/5">
-      <div className="laptop:mt-30 p-2 laptop:p-0" ref={aboutRef}>
+    {/* justify-center items-center */}
+
+    <div className="flex flex-col laptop:flex-row laptop:items-start mx-auto">
+      <div className="laptop:w-3/5 laptop:mt-30 p-2 laptop:p-0" ref={aboutRef}>
           <AboutCard title={"About"}>
               👋 <strong>I&rsquo;m Ali Azhar,</strong> an aspiring developer and a passionate engineering student at <strong>Langara College</strong>. Whether it&rsquo;s through the tech that I create or the volunteer work that I do, every project and initiative I undertake is driven by my desire to make the world a better place. 
               I&rsquo;m always looking for opportunities for learning and growth, be it through formal education, hands-on projects, or collaborative experiences with peers and mentors in the field.
@@ -194,14 +198,23 @@ export default function Home({ posts, totalPostsCount }) {
               {/*  <strong>Let&rsquo;s create something amazing together!</strong> */}
           </AboutCard>
       </div>
+      {/* <div className="laptop:w-2/5 laptop:mt-30 pl-6 laptop:pr-4 z-20 relative">
+        <ImageCard
+                    img={"https://static.wixstatic.com/media/004224_6b41701cc84b4ef7ac7411c9a4fb7caa~mv2.jpg/v1/fill/w_670,h_354,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/004224_6b41701cc84b4ef7ac7411c9a4fb7caa~mv2.jpg"}
+                    name={"Test button"}
+                    description={"Check out my work here!"}
+                    url={"https://i2u.li"}
+          />
+        <div className="flex justify-center z-10 relative -mt-6">
+        </div>
+      </div> */}
     </div>
-    {showBlog && (
-        <div className="mob:ml-6 mob:mr-6"><RecentBlogs posts={posts} showSeeMoreButton={showSeeMoreButton} /></div>
+      {showBlog && (
+      <div className="mob:ml-6 mob:mr-6"><RecentBlogs posts={posts} showSeeMoreButton={showSeeMoreButton} /></div>
             )}
-          
           <Footer />
   
-        </div>
+      </div>
     </div>
   );
 }

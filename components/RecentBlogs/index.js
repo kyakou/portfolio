@@ -1,5 +1,6 @@
 import React from 'react';
-import Router from 'next/router';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { ISOToDate } from '../../utils';
 import ButtonGradient from '../ButtonGradient';
 
@@ -10,9 +11,11 @@ const placeholderImages = [
 ];
 
 const RecentBlogs = ({ posts, showSeeMoreButton }) => {
+  const router = useRouter();
+
   if (!posts || !Array.isArray(posts) || posts.length === 0) {
     console.error('RecentBlogs: `posts` is undefined or not an array or empty.');
-    return null; // Returns nothing if no posts
+    return null;
   }
 
   const getRandomPlaceholderImage = () => {
@@ -29,35 +32,42 @@ const RecentBlogs = ({ posts, showSeeMoreButton }) => {
     }
   };
 
+  const handleMouseEnter = (slug) => {
+    router.prefetch(`/blog/${slug}`);
+  };
+
   return (
     <>
       <h1 className="tablet:m-10 mob:mt-10 tablet:mt-19 text-2xl font-bold mob:ml-6 mob:mr-6">Recent Blogs</h1>
       <div className="mt-10 grid grid-cols-1 mob:grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 justify-between gap-10 tablet:m-10">
         {posts.map((post) => (
-          <div
-            className="cursor-pointer relative overflow-hidden rounded-lg shadow-lg transition-all ease-out duration-300 hover:scale-110"
-            key={post.slug}
-            onClick={() => Router.push(`/blog/${post.slug}`)}
-          >
-            <img
-              className="w-full h-40 object-cover transition-all ease-out duration-300"
-              src={post.image || getRandomPlaceholderImage()}
-              alt={post.title}
-            />
-            <div className="p-4">
-              <h2 className="text-xl font-semibold">{post.title}</h2>
-              <p className="mt-2 mb-2 opacity-50 text-m">
-                {getPreviewText(post)}
-              </p>
-              <span className="text-sm mt-5 opacity-25">
-                {ISOToDate(post.date)}
-              </span>
+          <Link href={`/blog/${post.slug}`} key={post.slug} passHref>
+            <div
+              className="cursor-pointer relative overflow-hidden rounded-lg shadow-lg transition-all ease-out duration-300 hover:scale-110"
+              onMouseEnter={() => handleMouseEnter(post.slug)}
+            >
+              <img
+                className="w-full h-40 object-cover transition-all ease-out duration-300"
+                src={post.image || getRandomPlaceholderImage()}
+                alt={post.title}
+              />
+              <div className="p-4">
+                <h2 className="text-xl font-semibold">{post.title}</h2>
+                <p className="mt-2 mb-2 opacity-50 text-m">
+                  {getPreviewText(post)}
+                </p>
+                <span className="text-sm mt-5 opacity-25">
+                  {ISOToDate(post.date)}
+                </span>
+              </div>
             </div>
-          </div>
+          </Link>
         ))}
         {showSeeMoreButton && (
           <div className="col-span-full flex justify-center mt-1">
-            <ButtonGradient onClick={() => Router.push('/blog')}>View all blogs</ButtonGradient>
+            <ButtonGradient>
+              <Link href="/blog">View all blogs</Link>
+            </ButtonGradient>
           </div>
         )}
       </div>

@@ -37,7 +37,12 @@
     "tagline": "👋  cant swim",
     "description": "hi",
     "experiences": [
-      {}
+      {
+        "dates": "",
+        "type": "",
+        "position": "",
+        "bullets": ""
+      }
     ],
     "education": {
       "universityName": "",

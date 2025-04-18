@@ -23,9 +23,9 @@ function NotFoundTitle() {
         <div style={{ fontSize: '50px', fontWeight: 'bold' }}>
             Links
         </div>
-        <h1 className="ml-5 mr-5 laptop:ml-0 laptop:mr-0" style={{ marginTop: '20px', fontSize: '16px', textAlign: 'center' }}>
+        {/* <h1 className="ml-5 mr-5 laptop:ml-0 laptop:mr-0" style={{ marginTop: '20px', fontSize: '16px', textAlign: 'center' }}>
             Page not found
-        </h1>
+        </h1> */}
         <div className='mt-5'>
         <ButtonGradientBG
           type="primary"
