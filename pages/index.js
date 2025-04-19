@@ -96,7 +96,7 @@ export default function Home({ posts, totalPostsCount }) {
           <div className="mt-5 mob:ml-3">
             <h1
               ref={textOne}
-              className="text-3xl tablet:text-4xl laptop:text-4xl laptopl:text-4xl p-1 tablet:p-2 font-semibold w-4/5 mob:w-full laptop:w-4/5"
+              className="text-xl tablet:text-4xl laptop:text-4xl laptopl:text-4xl p-1 tablet:p-2 font-semibold w-4/5 mob:w-full laptop:w-4/5"
             >
               {data.headerTaglineOne}
             </h1>
